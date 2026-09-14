@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Trabajo de Grado - IUPSM Mérida</title>
+    <meta name="description" content="Guía interactiva del IUPSM para consultar el cronograma, formatos oficiales y normativas del Trabajo de Grado.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        psm: {
+                            blue: '#003366',
+                            light: '#004c99',
+                            gold: '#f59e0b',
+                            bg: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800 antialiased font-sans">
+
+    <header>
+    <nav aria-label="Navegación principal" class="bg-psm-blue text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap text-psm-gold text-2xl"></i>
+                    <span class="font-bold text-lg md:text-xl tracking-wide hidden sm:block">IUPSM Extensión Los Andes</span>
+                    <span class="font-bold text-xl tracking-wide sm:hidden">IUPSM</span>
+                </div>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#cronograma" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Cronograma</a>
+                    <a href="#formatos" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Formatos</a>
+                    <a href="#normativas" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Normativas</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" type="button" class="text-white hover:text-psm-gold focus:outline-none focus:ring-2 focus:ring-psm-gold rounded p-2" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()">
+                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-blue-800 py-3">
+                <a href="#cronograma" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Cronograma</a>
+                <a href="#formatos" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Formatos</a>
+                <a href="#normativas" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Normativas</a>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <div class="bg-gradient-to-br from-psm-blue to-psm-light text-white py-12 md:py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+                Guía Interactiva de <span class="text-psm-gold">Trabajo de Grado</span>
+            </h1>
+            <p class="text-base md:text-lg lg:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
+                Revisa la planificación, accede a los formatos oficiales y consulta las normativas institucionales vigentes.
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="#cronograma" class="bg-psm-gold hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg transform hover:-translate-y-1">
+                    Ver Cronograma <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        
+        <section id="cronograma" class="mb-20 scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-psm-blue mb-3">Cronograma Semanal de Actividades</h2>
+                <p class="text-gray-600">Proceso estructurado en 18 semanas por fase de investigación.</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mb-8">
+                <button onclick="openTab('fase1')" id="btn-fase1" class="tab-btn w-full sm:w-auto bg-psm-blue text-white px-6 py-3 rounded-lg font-semibold shadow-md border-b-4 border-psm-gold transition-all transform hover:scale-105">
+                    <i class="fa-solid fa-book-open mr-2"></i> Fase I: Proyecto de Investigación (9no Semestre)
+                </button>
+                <button onclick="openTab('fase2')" id="btn-fase2" class="tab-btn w-full sm:w-auto bg-white text-gray-600 hover:bg-gray-50 px-6 py-3 rounded-lg font-semibold shadow-sm border-b-4 border-transparent transition-all transform hover:scale-105">
+                    <i class="fa-solid fa-microscope mr-2"></i> Fase II: Trabajo de Grado (10mo Semestre)
+                </button>
+            </div>
+
+            <!-- FASE 1: -->
+            <div id="fase1" class="tab-content block active bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100">
+                <h3 class="text-xl md:text-2xl font-bold text-psm-blue mb-8 border-b pb-4 flex items-center gap-3">
+                    <i class="fa-solid fa-pen-ruler text-psm-gold"></i> Proyecto de Investigación / Taller de Diseño IX / Diseño Industrial IX
+                </h3>
+                
+                <div class="relative border-l-4 border-blue-200 ml-4 md:ml-10 space-y-8 pb-4">
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all">
+                            <span class="text-psm-gold font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 1 a 3</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Concepción y Protocolo de Investigación</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Selección del tema/problema, línea de investigación, y enlace con la empresa u organización (si aplica). Redacción del Protocolo de Investigación.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all">
+                            <span class="text-psm-gold font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 4 a 5</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Aprobación del Protocolo y Capítulo I</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Evaluación/Aprobación del protocolo por la Comisión Permanente. Redacción de la Contextualización del Problema y formulación.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all">
+                            <span class="text-psm-gold font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 6 a 7</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Delimitación del Capítulo I</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Definición y redacción de Objetivos (General y Específicos) e Importancia o Justificación de la Investigación.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all">
+                            <span class="text-psm-gold font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 8 a 9</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Capítulo II: Marco Referencial</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Búsqueda documental, revisión sistemática y selección de Antecedentes de la Investigación (mínimo 3, no mayores a 5 años).</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all">
+                            <span class="text-psm-gold font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 10 a 11</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Bases Teóricas y Legales</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Redacción de Bases Teóricas, definición del Sistema de Variables / Hipótesis y Bases Legales (si aplica).</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all">
+                            <span class="text-psm-gold font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 12 a 13</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Capítulo III: Marco Metodológico</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Definición de Modalidad, Diseño y Tipo de Investigación. Definición de Población, Muestra o Técnicas de Recolección de Datos.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-5 rounded-xl border border-blue-200 shadow-md">
+                            <span class="text-psm-blue font-bold tracking-wider text-sm uppercase flex items-center gap-2"><i class="fa-solid fa-flag-checkered text-psm-gold"></i> Cierre de Fase I</span>
+                            <ul class="mt-4 space-y-3 text-sm text-gray-700">
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Semana 14:</span> Finalización del Borrador de la Propuesta. Consolidación de Capítulos, Referencias y Anexos (mín. 50 páginas). Revisión formal del docente y tutor.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Semana 15:</span> Emisión de la Autorización por el Docente y Tutor. Entrega Escrita de la Propuesta (1 ejemplar anillado azul).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Semana 16:</span> Presentación Oral de la Propuesta (máx. 15 min) ante el Jurado Evaluador.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE 2:-->
+            <div id="fase2" class="tab-content hidden bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100">
+                <h3 class="text-xl md:text-2xl font-bold text-psm-blue mb-8 border-b pb-4 flex items-center gap-3">
+                    <i class="fa-solid fa-laptop-code text-psm-gold"></i> Trabajo de Grado / Taller de Diseño X / Diseño Industrial X
+                </h3>
+                
+                <div class="relative border-l-4 border-psm-gold ml-4 md:ml-10 space-y-8 pb-4">
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 hover:shadow-lg hover:bg-amber-50 transition-all">
+                            <span class="text-psm-blue font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semana 1</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Inscripción y Puesta en Marcha</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Inscripción formal de la materia y de la propuesta aprobada. Planificación operativa del trabajo de campo o experimental.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 hover:shadow-lg hover:bg-amber-50 transition-all">
+                            <span class="text-psm-blue font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 2 a 3</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Recolección de Datos</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Aplicación de instrumentos, trabajo de campo, pruebas de laboratorio, cálculos o análisis proyectivos.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 hover:shadow-lg hover:bg-amber-50 transition-all">
+                            <span class="text-psm-blue font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semana 4</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Procesamiento y Desarrollo Técnico</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Tabulación de datos, ejecuciones técnicas, desarrollo de software, maquetas o diseños.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 hover:shadow-lg hover:bg-amber-50 transition-all">
+                            <span class="text-psm-blue font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 5 a 7</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Capítulo IV: Análisis de Resultados</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Redacción y estructuración del Capítulo IV (Resultados, Análisis e Interpretación / Ingeniería del Proyecto).</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-amber-50/50 p-5 rounded-xl border border-amber-100 hover:shadow-lg hover:bg-amber-50 transition-all">
+                            <span class="text-psm-blue font-bold tracking-wider text-xs uppercase bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">Semanas 8 a 11</span>
+                            <h4 class="text-lg font-bold text-psm-blue mt-3">Conclusiones e Integración Final</h4>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Síntesis de hallazgos, Conclusiones y Recomendaciones. Integración total del informe final y Revisión del Tutor.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 timeline-dot">
+                        <div class="bg-gradient-to-br from-amber-100 to-amber-50 p-5 rounded-xl border border-amber-200 shadow-md">
+                            <span class="text-psm-blue font-bold tracking-wider text-sm uppercase flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-psm-gold"></i> Defensa y Culminación</span>
+                            <ul class="mt-4 space-y-3 text-sm text-gray-700">
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Semanas 12-13:</span> Aprobación del Tutor para Predefensa. Consignación de 1 ejemplar anillado (azul) y firma de Solvencia (Administrativa/Académica).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Semanas 14-15:</span> Presentación Preliminar (Predefensa) ante el Jurado. Corrección de observaciones.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Semanas 16-17:</span> Defensa Oral Pública (máx. 45 min), deliberación y veredicto.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-check text-green-600 mt-1"></i> <span><span class="text-psm-blue font-semibold">Cierre:</span> Entrega de 1 ejemplar empastado final y 2 CD (Post-Semana 18).</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="formatos" class="mb-20 scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-psm-blue mb-3">Formatos Oficiales de Descarga</h2>
+                <p class="text-gray-600">Documentos requeridos para el expediente de Trabajo de Grado a lo largo de las distintas fases.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-8" role="group" aria-label="Filtrar formatos por responsable">
+                <button type="button" class="format-filter-btn bg-psm-blue text-white px-5 py-2 rounded-lg font-semibold shadow-sm transition-all" data-filter="todos" onclick="filterFormats('todos')" aria-pressed="true">
+                    Todos
+                </button>
+                <button type="button" class="format-filter-btn bg-white text-gray-600 px-5 py-2 rounded-lg font-semibold shadow-sm border border-gray-200 transition-all hover:border-psm-blue" data-filter="estudiante" onclick="filterFormats('estudiante')" aria-pressed="false">
+                    Estudiante
+                </button>
+                <button type="button" class="format-filter-btn bg-white text-gray-600 px-5 py-2 rounded-lg font-semibold shadow-sm border border-gray-200 transition-all hover:border-psm-blue" data-filter="tutores" onclick="filterFormats('tutores')" aria-pressed="false">
+                    Tutores
+                </button>
+                <button type="button" class="format-filter-btn bg-white text-gray-600 px-5 py-2 rounded-lg font-semibold shadow-sm border border-gray-200 transition-all hover:border-psm-blue" data-filter="jurados" onclick="filterFormats('jurados')" aria-pressed="false">
+                    Jurados
+                </button>
+                <button type="button" class="format-filter-btn bg-white text-gray-600 px-5 py-2 rounded-lg font-semibold shadow-sm border border-gray-200 transition-all hover:border-psm-blue" data-filter="organizacion" onclick="filterFormats('organizacion')" aria-pressed="false">
+                    Organización
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-file-signature text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-001</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Protocolo</span>
+                            </div>
+                        </div>
+                        <a href="./Formatos/FOR-INVP-001.docx" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Compila los datos del estudiante, línea de investigación y propósito inicial de la propuesta.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-stamp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-002</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Aval Institucional</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Carta Aval Institucional emitida por el coordinador para presentar al estudiante ante la organización o empresa donde se realizará la investigación.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-building text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-003</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Aval Empresarial</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Carta Aval de la organización pública o privada donde se certifica y avala la Propuesta de Investigación.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-clipboard-check text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-004</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Evaluación Proyecto</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Resultado de la evaluación realizada por el jurado evaluador al informe escrito y presentación oral de la Propuesta o Proyecto de Investigación.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-thumbs-up text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-005</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Aprobación Proyecto</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Constancia de aprobación de la propuesta de Trabajo de Grado otorgada por el docente que administra la asignatura y el tutor.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-microphone text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-006</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Autorización Presentación</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Autorización para la presentación oral de la propuesta de Trabajo de Grado, emitida por el docente y el tutor correspondiente.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-book-bookmark text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-007</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Entrega Presencial</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Formato de entrega del ejemplar anillado del Proyecto de Investigación y envío vía correo institucional para estudiantes en modalidad presencial.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-laptop text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-008</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Entrega a Distancia</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Formato para la entrega y constancia de envío del Proyecto o Propuesta de Trabajo de Grado a través del aula virtual, modalidad a distancia.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-id-card-clip text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-009</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Portada Instrumentos</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Formato o portada identificativa utilizada para procesos de evaluación e instructivos dentro del Trabajo de Grado.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-chalkboard-user text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-010</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Evaluación Docente y Tutor</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Planilla de resultados de la evaluación del Proyecto de Investigación realizada directamente por el docente de la asignatura (010-1) y por el tutor (010-2).</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-magnifying-glass-chart text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-011</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Observaciones Jurado</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Formato para asentar las observaciones y sugerencias realizadas por el Jurado Evaluador durante la presentación de la Propuesta.</p>
+                    </div>
+                </div>
+                
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-clipboard-check text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-012</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Evaluación Final 9no</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Resultado de la evaluación emitida por el Docente de la asignatura, el tutor, y jurados.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-key text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-013</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Pase a Predefensa</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Autorización oficial emitida por el tutor al estudiante indicando que el Trabajo reúne los requisitos para ser sometido a predefensa.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-check-double text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-014</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Solvencias</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Formulario requerido para consignar y verificar las solvencias administrativas y académicas ante el Coordinador de Trabajo de Grado.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-list-check text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-015</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Acta Predefensa</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Acta de Presentación Oral Preliminar (Predefensa). En este documento se asientan las observaciones emitidas por el Jurado Evaluador por cada capítulo.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-certificate text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-016</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Resultado Predefensa</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Acta que contiene el resultado formal de la predefensa del Trabajo de Grado autorizando (o no) al estudiante para la defensa definitiva.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-pen-ruler text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-017</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Autorización para Defensa</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Acta de comformidad y Autorización para la defensa final por parte de los jurados.
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-clipboard-list text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-018</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Evaluación Final</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Instrumento detallado utilizado por cada Jurado para la evaluación del Informe Escrito y la Presentación Oral del Trabajo de Grado.</p>
+                    </div>
+                </div>
+
+                <div class="format-card bg-white rounded-2xl shadow border border-gray-100 p-6 cursor-pointer group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-psm-blue group-hover:bg-psm-blue group-hover:text-white transition-all">
+                                <i class="fa-solid fa-file-invoice text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">FOR-INVP-019</h4>
+                                <span class="text-xs text-psm-gold font-bold uppercase tracking-wider">Acta Evaluación</span>
+                            </div>
+                        </div>
+                        <a href="#" class="bg-gray-100 p-2 rounded-full text-gray-400 group-hover:bg-psm-gold group-hover:text-white transition-colors" title="Descargar Formato">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="format-content">
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4 leading-relaxed">Acta consolidada de evaluación general del Trabajo de Grado firmada por los miembros del Jurado Evaluador.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="normativas" class="mb-10 scroll-mt-24">
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-xl text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 text-gray-50 opacity-50">
+                    <i class="fa-solid fa-scale-balanced text-[200px]"></i>
+                </div>
+                
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold text-psm-blue mb-4">Recursos Normativos Institucionales</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto mb-10">Documentos fundamentales para la estructuración, presentación y evaluación de tu proyecto.</p>
+                    
+                    <div class="flex flex-col md:flex-row justify-center items-stretch gap-6">
+                        <a href="./Recursos/Manual.pdf" class="w-full md:w-auto flex items-center justify-center gap-5 bg-psm-blue hover:bg-psm-light text-white py-4 px-8 rounded-2xl shadow-md hover:shadow-lg transition-all border-2 border-psm-blue hover:border-psm-light group">
+                            <i class="fa-solid fa-book text-3xl text-psm-gold"></i>
+                            <div class="text-left">
+                                <span class="block text-[10px] text-blue-300 uppercase tracking-widest font-bold mb-1">Descargar Documento</span>
+                                <span class="block font-bold leading-tight">Manual para la Elaboración <br>del Trabajo de Grado (2015)</span>
+                            </div>
+                        </a>
+                        
+                        <a href="./Recursos/Reglamento.pdf" class="w-full md:w-auto flex items-center justify-center gap-5 bg-psm-blue hover:bg-psm-light text-white py-4 px-8 rounded-2xl shadow-md hover:shadow-lg transition-all border-2 border-psm-blue hover:border-psm-light group">
+                            <i class="fa-solid fa-scale-balanced text-3xl text-psm-gold"></i>
+                            <div class="text-left">
+                                <span class="block text-[10px] text-blue-300 uppercase tracking-widest font-bold mb-1">Descargar Documento</span>
+                                <span class="block font-bold leading-tight">Reglamento de Trabajo de Grado<br>(2025)</span>
+                            </div>
+                        </a>
+
+                        <a href="#" class="w-full md:w-auto flex items-center justify-center gap-5 bg-psm-blue hover:bg-psm-light text-white py-4 px-8 rounded-2xl shadow-md hover:shadow-lg transition-all border-2 border-psm-blue hover:border-psm-light group">
+                            <i class="fa-solid fa-flask text-3xl text-psm-gold"></i>
+                            <div class="text-left">
+                                <span class="block text-[10px] text-blue-300 uppercase tracking-widest font-bold mb-1">Descargar Documento</span>
+                                <span class="block font-bold leading-tight">Lineas de Investicación<br>(2026)</span>
+                            </div>
+                        </a>                      
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="bg-[#0f172a] text-white py-12 text-center border-t-4 border-psm-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <div class="flex items-center gap-3 mb-6">
+                <i class="fa-solid fa-graduation-cap text-psm-gold text-4xl"></i>
+                <h2 class="text-3xl font-bold tracking-wider">IUPSM</h2>
+            </div>
+            
+            <p class="text-gray-400 mb-2 max-w-lg text-lg">Instituto Universitario Politécnico "Santiago Mariño" - Extensión Los Andes - Mérida.</p>
+            <p class="text-gray-400 mb-8 max-w-lg text-sm bg-gray-800/50 py-2 px-4 rounded-full border border-gray-700">Departamento de Investigación y Producción</p>
+            
+            <div class="border-t border-gray-800 w-full pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Portal de Trabajo de Grado. </p>
+                <p class="mt-2 md:mt-0">Realizado por Jose6alejandro.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-psm-gold hover:bg-yellow-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all z-50">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
