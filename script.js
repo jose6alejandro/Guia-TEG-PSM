@@ -58,7 +58,7 @@ const formatRoles = {
     'FOR-INVP-006': ['tutores'],
     'FOR-INVP-007': ['estudiante'],
     'FOR-INVP-008': ['estudiante'],
-    'FOR-INVP-009': ['estudiante'],
+    'FOR-INVP-009': ['tutores'],
     'FOR-INVP-010': ['tutores'],
     'FOR-INVP-011': ['jurados'],
     'FOR-INVP-012': ['tutores', 'jurados'],
