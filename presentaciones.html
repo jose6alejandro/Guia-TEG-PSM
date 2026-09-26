@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avisos y programación de presentaciones de Trabajo de Grado del IUPSM Extensión Los Andes.">
+    <title>Presentaciones de Trabajo de Grado | IUPSM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/presentaciones.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><span>IUPSM Extensión Los Andes</span></div>
+            <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a la guía</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="intro">
+            <div>
+                <p class="eyebrow">Trabajo de Grado · IUPSM</p>
+                <h1>Presentaciones</h1>
+                <p class="intro-copy">Convocatorias para las presentaciones de proyectos y defensas de Trabajo de Grado.</p>
+            </div>
+            <button class="print-button" type="button" aria-label="Imprimir anuncios">
+                <i class="fa-solid fa-print" aria-hidden="true"></i> Imprimir
+            </button>
+        </div>
+
+        <section aria-labelledby="upcoming-heading">
+            <h2 id="upcoming-heading" class="section-heading"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Próximas presentaciones</h2>
+            <div class="filters">
+                <div class="student-search">
+                    <label for="student-search">Buscar por estudiante</label>
+                    <div class="search-field">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        <input id="student-search" type="search" placeholder="Escribe el nombre del estudiante" autocomplete="off">
+                    </div>
+                </div>
+                <div class="school-filter">
+                    <label for="school-filter">Filtrar por escuela</label>
+                    <select id="school-filter">
+                        <option value="">Todas las escuelas</option>
+                        <option value="arquitectura">Arquitectura</option>
+                        <option value="ingenieria civil">Ingeniería Civil</option>
+                        <option value="ingenieria electrica">Ingeniería Eléctrica</option>
+                        <option value="ingenieria electronica">Ingeniería Electrónica</option>
+                        <option value="ingenieria industrial">Ingeniería Industrial</option>
+                        <option value="ingenieria en mantenimiento mecanico">Ingeniería en Mantenimiento Mecánico</option>
+                        <option value="ingenieria de sistemas">Ingeniería de Sistemas</option>
+                        <option value="ingenieria en diseno industrial">Ingeniería en Diseño Industrial</option>
+                        <option value="ingenieria quimica">Ingeniería Química</option>
+                        <option value="ingenieria agronomica">Ingeniería Agronómica</option>
+                        <option value="ingenieria en telecomunicaciones">Ingeniería en Telecomunicaciones</option>
+                    </select>
+                </div>
+            </div>
+            <p id="feed-message" class="feed-message" role="status" aria-live="polite">Configura la URL CSV de tu hoja de Google para mostrar las presentaciones.</p>
+            <div id="announcements" class="announcements"></div>
+            <p id="search-empty" class="search-empty" role="status" hidden>No hay presentaciones que coincidan con esos filtros.</p>
+        </section>
+    </main>
+
+    <footer>Instituto Universitario Politécnico Santiago Mariño · Extensión Los Andes</footer>
+
+    <template id="announcement-template">
+        <article class="announcement" aria-label="Anuncio de presentación de Trabajo de Grado">
+            <div class="date-panel">
+                <div class="date-icon"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i></div>
+                <p class="date-label">Fecha</p>
+                <p class="date-value" data-field="fecha"></p>
+            </div>
+            <div class="announcement-content">
+                <div class="notice-row">
+                    <p class="notice-label">Presentación de Trabajo de Grado</p>
+                    <span class="status" data-field="estado"></span>
+                </div>
+                <h3 class="project-title" data-field="titulo"></h3>
+                <div class="details">
+                    <div class="detail">
+                        <span class="detail-label">Estudiante</span>
+                        <span class="detail-value"><i class="fa-regular fa-user" aria-hidden="true"></i> <span data-field="estudiante"></span></span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Escuela</span>
+                        <span class="detail-value"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> <span data-field="escuela"></span></span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Tutor</span>
+                        <span class="detail-value"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> <span data-field="tutor"></span></span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Jurado evaluador</span>
+                        <span class="detail-value"><i class="fa-solid fa-users" aria-hidden="true"></i> <span data-field="jurado"></span></span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Hora</span>
+                        <span class="detail-value"><i class="fa-regular fa-clock" aria-hidden="true"></i> <span data-field="hora"></span></span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Lugar</span>
+                        <span class="detail-value"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-field="lugar"></span></span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <script src="js/sheets.js" defer></script>
+    <script src="js/presentaciones.js" defer></script>
+</body>
+</html>

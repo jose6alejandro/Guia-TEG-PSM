@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -52,6 +52,7 @@
                     <a href="#formatos" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Formatos</a>
                     <a href="#normativas" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Normativas</a>
                     <a href="#resumen" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Resumen</a>
+                    <a href="presentaciones.html" target="_blank" rel="noopener noreferrer" class="hover:text-psm-gold transition-colors font-medium text-sm lg:text-base">Presentaciones</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button id="mobileMenuButton" type="button" class="text-white hover:text-psm-gold focus:outline-none focus:ring-2 focus:ring-psm-gold rounded p-2" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()">
@@ -64,6 +65,7 @@
                 <a href="#formatos" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Formatos</a>
                 <a href="#normativas" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Normativas</a>
                 <a href="#resumen" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Resumen</a>
+                <a href="presentaciones.html" target="_blank" rel="noopener noreferrer" class="mobile-menu-link block px-3 py-3 rounded hover:bg-psm-light hover:text-psm-gold transition-colors font-medium">Presentaciones</a>
             </div>
         </div>
     </nav>
@@ -82,6 +84,12 @@
                 <a href="#cronograma" class="bg-psm-gold hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg transform hover:-translate-y-1">
                     Ver Cronograma <i class="fa-solid fa-arrow-down ml-2"></i>
                 </a>
+            </div>
+            <div id="announcementTicker" class="announcement-ticker" role="region" aria-label="Anuncios del portal">
+                <span class="ticker-label"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Anuncio</span>
+                <div class="ticker-viewport" aria-live="polite">
+                    <div id="tickerTrack" class="ticker-track"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -783,6 +791,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="js/sheets.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

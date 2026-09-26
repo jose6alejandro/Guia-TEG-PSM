@@ -107,3 +107,49 @@ function scrollToTop() {
         behavior: 'smooth'
     });
 }
+
+const ticker = document.getElementById('announcementTicker');
+const tickerTrack = document.getElementById('tickerTrack');
+
+function setTickerMessage(message) {
+    const item = document.createElement('span');
+    item.className = 'ticker-item';
+    item.textContent = message;
+    tickerTrack.replaceChildren(item);
+    tickerTrack.classList.add('is-static');
+}
+
+function renderTicker(messages) {
+    const uniqueMessages = [...new Set(messages.map(message => message.trim()).filter(Boolean))];
+    if (!uniqueMessages.length) {
+        setTickerMessage('No hay anuncios publicados por el momento.');
+        return;
+    }
+
+    const group = document.createElement('div');
+    group.className = 'ticker-group';
+    uniqueMessages.forEach(message => {
+        const item = document.createElement('span');
+        item.className = 'ticker-item';
+        item.textContent = message;
+        group.append(item);
+    });
+
+    const repeatedGroup = group.cloneNode(true);
+    repeatedGroup.setAttribute('aria-hidden', 'true');
+    tickerTrack.classList.remove('is-static');
+    tickerTrack.replaceChildren(group, repeatedGroup);
+}
+
+async function loadAnnouncementTicker() {
+    try {
+        const response = await fetch(window.GoogleSheet.csvUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('No se pudo consultar la hoja.');
+        const rows = window.GoogleSheet.parseCsv(await response.text());
+        renderTicker(rows.map(row => row.anuncio || ''));
+    } catch (error) {
+        setTickerMessage('No se pudieron cargar los anuncios.');
+    }
+}
+
+loadAnnouncementTicker();
